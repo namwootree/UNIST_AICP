@@ -76,7 +76,11 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
   end = data.shape[0] - window_size - 1
 
   print('*'*50)
-  print(f'\nRolling {method} Window를 실행합니다\n')
+  print(f'\n{model_name} Model의 Rolling {method} Window를 실행합니다\n')
+  print('설정된 Model의 하이퍼파리미터 : \n')
+  for p, v in zip(model.get_params(deep=True).keys(), model.get_params(deep=True).values()):
+    print(f'   {p} : {b}')
+  print()
   print('*'*50)
 
   for i in tqdm(range(end)):
@@ -170,7 +174,7 @@ def plot_result(data, method, model_name):
   # Visualization Confusion Matrix
   confusion = confusion_matrix(data['Actual_POS_WML'], data[f'{model_name}_PRED_POS_WML'])
   sns.heatmap(confusion, annot=True, fmt='g')
-  plt.title(f'Performance results ({method}) of the {model_name} model')
+  plt.title(f'Performance results {method} of the {model_name} model')
   
   plt.show()
 
@@ -287,6 +291,44 @@ def slice_feature_importance(data, num, method, model_name):
     sliced_data = data.loc[start:end]
     plot_result(sliced_data, method, model_name)
     plot_feature_importances(sliced_data)
+
+def cumm_return_by_dynamic(data, wml, plot=True):
+
+  start_index = data.index[0]
+  wml = wml.loc[start_index:]
+
+  df = pd.DataFrame(wml['wml'] * data['RDF_PROB_POS_WML'])
+  df.columns = ['cum_return']
+  df['cum_return'] = (1 + df.cum_return).cumprod() - 1 
+
+  print('최근 누적 수익률\n')
+  latly_10 = df.sort_index(ascending=False).head(5)
+  for i, r in zip(latly_10.index, latly_10['cum_return']):
+    i = str(i)
+    print('  {}년-{}월 -> {:0.2f}'.format(i[:4], i[4:6], r))
+
+  print('\n누적 수익률 가장 높았던 순간 Top 10\n')
+  top_10 = df.sort_values(by='cum_return', ascending=False).head(10)
+  rank = 1
+  for i, r in zip(top_10.index, top_10['cum_return']):
+    i = str(i)
+    print('  {}등 : {}년-{}월 -> {:0.2f}'.format(rank, i[:4], i[4:6], r))
+    rank += 1
+
+  if plot == True:
+    plt.figure(figsize=(13, 6))
+    sns.lineplot(data=df, x=df.index, y=df['cum_return'])
+    plt.xticks([df.index[i] for i in range(0,len(df.index), 12)])
+    plt.tick_params(axis='x',
+                    direction='out',
+                    labelrotation=45,
+                    length=1,
+                    pad=10,
+                    labelsize=5,
+                    width=5)
+    plt.show() 
+
+  return df
 
 if __name__=="__main__":
   print("2023년 UNIST AICP TEAM : UNIST 동학 개미")
