@@ -41,7 +41,7 @@ def preprocessing(data):
   return data
 
 def normal_wml(df):
-  print("\n'wml'이 양수면 1 & 음수면 0\n")
+  print("'wml'이 양수면 1 & 음수면 0")
   cond_wml = (df['wml']>=0)
   df.loc[cond_wml, 'pos_wml'] = 1
   df.loc[~cond_wml, 'pos_wml'] = 0
@@ -70,6 +70,10 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
   # 모델 학습이 종료되는 지점 설정
   end = data.shape[0] - window_size - 1
 
+  print('*'*50)
+  print(f'\nRolling {method} Window를 실행합니다\n')
+  print('*'*50)
+
   for i in tqdm(range(end)):
 
     # 모델 학습 중지
@@ -79,17 +83,11 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     
     # Rolling Fixed Window
     if method == 'Fixed':
-      print('*'*50)
-      print('\nRolling Fixed Window를 실행합니다\n')
-      print('*'*50)
       MODEL = model
       train = data.iloc[0+i:window_size+1+i]
 
     # Rolling Expanding Window
     elif method == 'Expanding':
-      print('*'*50)
-      print('\nRolling Expanding Window를 실행합니다\n')
-      print('*'*50)
       MODEL = model
       train = data.iloc[0:window_size+1+i]
     
