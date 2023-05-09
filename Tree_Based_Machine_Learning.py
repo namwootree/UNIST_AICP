@@ -9,7 +9,7 @@ def preprocessing(data):
   # 'DATE'를 칼럼 대신 인덱스로 사용
   data.index = data['DATE']
   data = data.drop(columns='DATE')
-  print('DATE'를 칼럼 대신 인덱스로 사용')
+  print("'DATE'를 칼럼 대신 인덱스로 사용")
 
   # 결측치 제거 및 모델 학습에 불필요한 칼럼 제거
   data = data.dropna()
