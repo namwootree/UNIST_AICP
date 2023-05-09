@@ -1,4 +1,26 @@
 
+# Load Library
+import pandas as pd
+import numpy as np
+
+from scipy import stats 
+from tabulate import tabulate
+
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+import random
+import os
+from tqdm.notebook import tqdm
+
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import classification_report
+from sklearn.metrics import accuracy_score # 정확도
+from sklearn.metrics import precision_score # 정밀도
+from sklearn.metrics import recall_score # 재현율
+from sklearn.metrics import f1_score # F1-Score
+from sklearn.metrics import confusion_matrix
+
 def my_seed_everywhere(seed):
     random.seed(seed) # random
     np.random.seed(seed) # numpy
@@ -254,25 +276,3 @@ if __name__=="__main__":
   print('코드 작성자 : 권남우(팀장)')
   print('Source Code : https://github.com/namwootree/UNIST_AICP')
   print('Thank You')
-
-  # Load Library
-  import pandas as pd
-  import numpy as np
-
-  from scipy import stats 
-  from tabulate import tabulate
-
-  import matplotlib.pyplot as plt
-  import seaborn as sns
-
-  import random
-  import os
-  from tqdm.notebook import tqdm
-
-  from sklearn.ensemble import RandomForestClassifier
-  from sklearn.metrics import classification_report
-  from sklearn.metrics import accuracy_score # 정확도
-  from sklearn.metrics import precision_score # 정밀도
-  from sklearn.metrics import recall_score # 재현율
-  from sklearn.metrics import f1_score # F1-Score
-  from sklearn.metrics import confusion_matrix
