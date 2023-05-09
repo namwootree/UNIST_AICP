@@ -42,9 +42,11 @@ def preprocessing(data):
 
 def normal_wml(df):
   print("'wml'이 양수면 1 & 음수면 0")
+  print("Output : 'Preprocessed_Data' & 'WML'")
   cond_wml = (df['wml']>=0)
   df.loc[cond_wml, 'pos_wml'] = 1
   df.loc[~cond_wml, 'pos_wml'] = 0
+  WML = df[['wml']]
 
   df.drop(columns=['wml'], inplace=True)
 
@@ -52,7 +54,7 @@ def normal_wml(df):
   print(f'Ratio : {POS_WML[0]/POS_WML[1]}')
   print(POS_WML)
 
-  return df
+  return df, WML
 
 def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot_feature=True):
 
