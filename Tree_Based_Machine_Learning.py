@@ -84,12 +84,12 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     # Rolling Fixed Window
     if method == 'Fixed':
       MODEL = model
-      train = data.iloc[0+i:window_size+1+i]
+      train = data.iloc[0+i:window_size+i]
 
     # Rolling Expanding Window
     elif method == 'Expanding':
       MODEL = model
-      train = data.iloc[0:window_size+1+i]
+      train = data.iloc[0:window_size+i]
     
     # 'method' 잘못입력한 경우
     else:
