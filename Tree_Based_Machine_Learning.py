@@ -43,6 +43,8 @@ def preprocessing(data):
 def normal_wml(df):
   print("'wml'이 양수면 1 & 음수면 0")
   print("Output : 'Preprocessed_Data' & 'WML'")
+  print()
+
   cond_wml = (df['wml']>=0)
   df.loc[cond_wml, 'pos_wml'] = 1
   df.loc[~cond_wml, 'pos_wml'] = 0
@@ -64,7 +66,8 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     'TRAIN_END_DATE':[],
     'TEST_DATE':[],
     'Actual_POS_WML':[],
-    f'{model_name}_PRED_POS_WML':[]
+    f'{model_name}_PRED_POS_WML':[],
+    f'{model_name}_PROB_POS_WML':[]
   }
 
   df_feature = pd.DataFrame()
@@ -111,6 +114,7 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     # 모델 학습 및 추론
     MODEL.fit(X_train, y_train)
     pred_test = MODEL.predict(X_test)
+    prob_test = MODEL.predict_proba(X_test)
 
     # 학습 및 테스트 데이터 정보 & 실제값과 예측값 정보 수집
     result_dict['TRAIN_START_DATE'].append(train.index[0])
@@ -119,6 +123,7 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
 
     result_dict['Actual_POS_WML'].append(list(y_test)[0])
     result_dict[f'{model_name}_PRED_POS_WML'].append(pred_test[0])
+    result_dict[f'{model_name}_PROB_POS_WML'].append(prob_test[0][-1])
 
     # 트리 기반 모델 (사이킷런)의 Feature Importance 정보 수집
     feature_importances = MODEL.feature_importances_
@@ -246,27 +251,40 @@ def display_feature_importance(data, method):
 
     return feature_df
 
-def slice_data(data, num, method, model_name):
+def slice_feature_importance(data, num, method, model_name):
 
-  division = int(data.shape[0]/num)
-  
-  for i in range(num):
-
-    if i == num-1:
-      sliced_data = data.iloc[i*division:]
-
-    else:
-      sliced_data = data.iloc[i*division:(i+1)*division]
-
-    start = sliced_data.index[0]
-    end = sliced_data.index[-1]
-
-    print()
-    print('*'*50)
-    print(f'\nDATE : {start} ~ {end}\n')
-    print('*'*50)
-    print()
+  if type(num) != bool:
+    division = int(data.shape[0]/num)
     
+    for i in range(num):
+
+      if i == num-1:
+        sliced_data = data.iloc[i*division:]
+
+      else:
+        sliced_data = data.iloc[i*division:(i+1)*division]
+
+      start = sliced_data.index[0]
+      end = sliced_data.index[-1]
+
+      print()
+      print('*'*50)
+      print(f'\nDATE : {start} ~ {end}\n')
+      print('*'*50)
+      print()
+      
+      plot_result(sliced_data, method, model_name)
+      plot_feature_importances(sliced_data)
+  
+  else:
+    start = input('Start Date (ex: 20200131): ')
+    end = input('Start Date (ex: 20221230): ')
+    print('*'*50)
+    print(f'\nDate : {start} ~ {end}\n')
+    print('*'*50)
+    print()
+
+    sliced_data = data.loc[start:end]
     plot_result(sliced_data, method, model_name)
     plot_feature_importances(sliced_data)
 
