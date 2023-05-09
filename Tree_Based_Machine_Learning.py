@@ -3,7 +3,7 @@ def my_seed_everywhere(seed):
     random.seed(seed) # random
     np.random.seed(seed) # numpy
     os.environ["PYTHONHASHSEED"] = str(seed) # os
-    print(f'고정된 Seed : {seed})
+    print(f'고정된 Seed : {seed}')
 
 def preprocessing(data):
   # 'DATE'를 칼럼 대신 인덱스로 사용
