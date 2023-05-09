@@ -1,41 +1,25 @@
 
-import pandas as pd
-import numpy as np
-
-from scipy import stats 
-from tabulate import tabulate
-
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-import random
-import os
-
-from sklearn.ensemble import RandomForestClassifier
-
-from sklearn.metrics import classification_report
-from sklearn.metrics import accuracy_score # 정확도
-from sklearn.metrics import precision_score # 정밀도
-from sklearn.metrics import recall_score # 재현율
-from sklearn.metrics import f1_score # F1-Score
-from sklearn.metrics import confusion_matrix
-
 def my_seed_everywhere(seed):
     random.seed(seed) # random
     np.random.seed(seed) # numpy
     os.environ["PYTHONHASHSEED"] = str(seed) # os
+    print(f'고정된 Seed : {seed})
 
 def preprocessing(data):
   # 'DATE'를 칼럼 대신 인덱스로 사용
   data.index = data['DATE']
   data = data.drop(columns='DATE')
+  print('DATE'를 칼럼 대신 인덱스로 사용')
+
   # 결측치 제거 및 모델 학습에 불필요한 칼럼 제거
   data = data.dropna()
   data = data.drop(columns=['winner', 'loser', 'form_date'])
+  print('결측치 제거 및 모델 학습에 불필요한 칼럼 제거')
+
   return data
 
 def normal_wml(df):
-
+  print('\nwml'이 양수면 1 & 음수면 0\n')
   cond_wml = (df['wml']>=0)
   df.loc[cond_wml, 'pos_wml'] = 1
   df.loc[~cond_wml, 'pos_wml'] = 0
@@ -43,7 +27,7 @@ def normal_wml(df):
   df.drop(columns=['wml'], inplace=True)
 
   POS_WML = df['pos_wml'].value_counts()
-  print(f' Ratio : {POS_WML[0]/POS_WML[1]}')
+  print(f'Ratio : {POS_WML[0]/POS_WML[1]}')
   print(POS_WML)
 
   return df
@@ -61,12 +45,10 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
 
   df_feature = pd.DataFrame()
 
-  i = 0
-
   # 모델 학습이 종료되는 지점 설정
   end = data.shape[0] - window_size - 1
 
-  while True:
+  for i in tqdm(range(end)):
 
     # 모델 학습 중지
     if i == end:
@@ -75,11 +57,17 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     
     # Rolling Fixed Window
     if method == 'Fixed':
+      print('*'*50)
+      print('\nRolling Fixed Window를 실행합니다\n')
+      print('*'*50)
       MODEL = model
       train = data.iloc[0+i:window_size+1+i]
 
     # Rolling Expanding Window
     elif method == 'Expanding':
+      print('*'*50)
+      print('\nRolling Expanding Window를 실행합니다\n')
+      print('*'*50)
       MODEL = model
       train = data.iloc[0:window_size+1+i]
     
@@ -115,8 +103,6 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
     df_ft_importance = pd.DataFrame(feature_importances, index = X_train.columns).T
     df_ft_importance.index = y_test.index
     df_feature = pd.concat([df_feature, df_ft_importance])
-
-    i += 1
 
   result = pd.DataFrame(result_dict)
   result.index = df_feature.index
@@ -264,5 +250,29 @@ def slice_data(data, num, method, model_name):
 
 if __name__=="__main__":
   print("2023년 UNIST AICP TEAM : UNIST 동학 개미")
-  print('\nTree_Based_Machine_Learning : 트리 기반 머신러닝 모델 비교를 위한 모듈\n')
+  print('\nTree_Based_Machine_Learning.py : 트리 기반 머신러닝 모델 비교를 위한 모듈\n')
   print('코드 작성자 : 권남우(팀장)')
+  print('Source Code : https://github.com/namwootree/UNIST_AICP')
+  print('Thank You')
+
+  # Load Library
+  import pandas as pd
+  import numpy as np
+
+  from scipy import stats 
+  from tabulate import tabulate
+
+  import matplotlib.pyplot as plt
+  import seaborn as sns
+
+  import random
+  import os
+  from tqdm.notebook import tqdm
+
+  from sklearn.ensemble import RandomForestClassifier
+  from sklearn.metrics import classification_report
+  from sklearn.metrics import accuracy_score # 정확도
+  from sklearn.metrics import precision_score # 정밀도
+  from sklearn.metrics import recall_score # 재현율
+  from sklearn.metrics import f1_score # F1-Score
+  from sklearn.metrics import confusion_matrix
