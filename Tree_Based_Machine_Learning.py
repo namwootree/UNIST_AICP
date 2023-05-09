@@ -79,7 +79,7 @@ def Roling_Windows(data, window_size, method, model, model_name, plot=True, plot
   print(f'\n{model_name} Model의 Rolling {method} Window를 실행합니다\n')
   print('설정된 Model의 하이퍼파리미터 : \n')
   for p, v in zip(model.get_params(deep=True).keys(), model.get_params(deep=True).values()):
-    print(f'   {p} : {b}')
+    print(f'   {p} : {v}')
   print()
   print('*'*50)
 
