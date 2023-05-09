@@ -19,7 +19,7 @@ def preprocessing(data):
   return data
 
 def normal_wml(df):
-  print('\nwml'이 양수면 1 & 음수면 0\n')
+  print("\n'wml'이 양수면 1 & 음수면 0\n")
   cond_wml = (df['wml']>=0)
   df.loc[cond_wml, 'pos_wml'] = 1
   df.loc[~cond_wml, 'pos_wml'] = 0
