@@ -36,7 +36,7 @@ def preprocessing(data):
   # 결측치 제거 및 모델 학습에 불필요한 칼럼 제거
   data = data.dropna()
   data = data.drop(columns=['winner', 'loser', 'form_date'])
-  print('결측치 제거 및 모델 학습에 불필요한 칼럼 제거')
+  print("결측치 제거 및 모델 학습에 불필요한 칼럼 제거 ('winner', 'loser', 'form_date')")
 
   return data
 
