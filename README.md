@@ -1,1 +1,54 @@
+# Research Topic 
+- 신경망 모형을 활용한 투자 포트폴리오 전략 개발
 
+# Introduction and Research Purpose
+
+- 자산의 과거 수익률에 기반한 모멘텀 투자전략은 금융시장에서 가장 오랫동안 높은 수익률을 나타낸 포트폴리오이다.
+- 비록 모멘텀 포트폴리오가 평균적인 수익률은 높지만, 수익률의 분표가 음의 방향으로 비대칭하여 단기간에 엄청난 손실을 가져다 주기도 한다.
+- 본 연구에서는 이러한 손실을 보완하기 위한 다양한 Dynamic Momentum 전략을 분석한다.
+- 모멘텀 전략의 손실이 발생하는 시기의 패턴을 인공 신경망 모형을 이용하여 파악하고, 이를 통해 우리는 전통적인 모멘텀 전략에 비해 높은 평균 수익률과 낮은 위험을 가진 새로운 모멘텀 전략을 찾고자 한다.
+
+<br>
+
+<img width="601" alt="스크린샷 2023-05-10 14 28 33" src="https://github.com/namwootree/UNIST_AICP/assets/91008734/c2c18b58-6799-4e52-a48f-f5f624d40624">
+
+<br>
+
+# Research Objectives and Expected Results
+
+- 본 연구의 최종 목표는 인공 신경망 모형을 활용하여 새로운 Dynamic Momentum 전략을 개발하는 것이다.
+- 본 연구의 기대 효과
+    - 새로운 포트폴리오에 대한 분석을 통해 모멘텀 전략을 유발하는 시장 오류에 대한 경제학적인 채널의 도출
+    - 모멘텀 전략 외의 다양한 포트폴리오 전략의 수익성 개선에 활용 가능한 도구의 개발이다.
+
+---
+
+# 2023 AICP Schedule
+- 3월 16일 : AICP 모집 마감
+- 3월 30일 : 최종 참여 팀 발표
+- 4월 1일 : 연구 시작
+- 4월 마지막 주 : 교류회
+- 7 ~ 8 월 : 중간 발표
+- 10 월 말 : 최종 연구 성과물 제출
+- 1월 10일 : UIRP & AICP Festival (포스터세션 형태의 최종발표)
+- 12월 31일 : 종료
+
+# Participant
+
+- Prof
+    - 한희은 교수님
+    - 신상욱 교수님
+- Stud
+    - 권남우 (조장)
+        - 소속 : 융합경영대학원 비즈니스 분석
+        - 이메일 : [namwootree@unist.ac.kr](mailto:namwootree@unist.ac.kr)
+        - Git Hub : [https://github.com/namwootree](https://github.com/namwootree)
+        - Velog : [https://velog.io/@namwootree](https://velog.io/@namwootree)
+    - 김예진
+        - 소속 : 산업공학과
+    - 오다은
+        - 소속 : 경영과학부
+    - 오현욱
+        - 소속 : 경영과학부
+    - 허찬범
+        - 소속 : 산업공학과
