@@ -300,6 +300,10 @@ def cumm_return_by_dynamic(data, wml, weight, plot=True):
   df = pd.DataFrame(wml['wml'] * data[weight])
   df.columns = ['cum_return']
   df['cum_return'] = (1 + df.cum_return).cumprod() - 1 
+  
+  S = df['cum_return'].mean()/df['cum_return'].std()
+
+  print('Sharpe Ratio : {.:3f}\n'.format(S))
 
   print('최근 누적 수익률\n')
   latly_10 = df.sort_index(ascending=False).head(5)
