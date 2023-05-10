@@ -328,7 +328,7 @@ def cumm_return_by_dynamic(data, wml, weight, plot=True):
 
     plt.figure(figsize=(13, 6))
     sns.lineplot(data=df, x=df.index, y=df['cum_return'], label='With_ML')
-    sns.lineplot(data=TEST_WML, x=TEST_WML.index, y=TEST_WML['cum_return'], label='Normal')
+    sns.lineplot(data=TEST_WML, x=TEST_WML.index, y=TEST_WML['cum_return'], label='Original')
     plt.xticks([df.index[i] for i in range(0,len(df.index), 12)])
     plt.tick_params(axis='x',
                     direction='out',
