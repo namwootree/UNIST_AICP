@@ -12,3 +12,8 @@
 **Method**
 * Rolling Fixed Window & Rolling Expanding Window
 * Feature Selection & Hyperparameter Tuning
+
+**Target**
+* 'wml' 변수의 값이 0이상이면 1 미만이면 0 -> 'pos_wml'
+* Label 1 : 733 
+* Label 0 : 413
