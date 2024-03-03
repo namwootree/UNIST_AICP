@@ -32,3 +32,11 @@
 - 10 월 말 : 최종 연구 성과물 제출
 - 1월 10일 : UIRP & AICP Festival (포스터세션 형태의 최종발표)
 - 12월 31일 : 종료
+
+---
+
+# Research summary description
+
+<br>
+
+![Final Poster UNIST 동학 개미 pdf-1](https://github.com/namwootree/UNIST_AICP/assets/91008734/8cc7de3a-4d36-4e41-b9ec-106069b94d98)
