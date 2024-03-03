@@ -36,7 +36,7 @@
 ---
 
 # Research summary description
-
+- 좀 더 자세한 내용은 [Final Report](https://github.com/namwootree/UNIST_AICP/blob/main/Final%20Report%20UNIST%20%E1%84%83%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%A8%20%E1%84%80%E1%85%A2%E1%84%86%E1%85%B5.pdf)에서 확인해주세요
 <br>
 
 ![Final Poster UNIST 동학 개미 pdf-1](https://github.com/namwootree/UNIST_AICP/assets/91008734/8cc7de3a-4d36-4e41-b9ec-106069b94d98)
