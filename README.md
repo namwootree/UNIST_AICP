@@ -36,6 +36,8 @@
 ---
 
 # Research summary description
+- Momentum Crash를 Anomaly로 정의
+- Validation Dataset의 Anomaly Score에 따른 Dynamic Portfolio Strategy 수립
 - 좀 더 자세한 내용은 [Final Report](https://github.com/namwootree/UNIST_AICP/blob/main/Final%20Report%20UNIST%20%E1%84%83%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%A8%20%E1%84%80%E1%85%A2%E1%84%86%E1%85%B5.pdf)에서 확인해주세요
 <br>
 
