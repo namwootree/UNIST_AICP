@@ -39,6 +39,8 @@
 - Momentum Crash를 Anomaly로 정의
 - Validation Dataset의 Anomaly Score에 따라 Leverage Function이 변화는 Dynamic Portfolio Strategy 수립
 - 이를 통해 Sharpe Ratio 및 누적 수익률이 각각 59.6%, 417.7% 상승함
+- 모멘텀 변동성이 커진 상황에서 Momentum Effect와 Momentum Crash를 잘 구분하지 못한 한계점 존재
+- 과거의 금융위기 발생 요인 외에 다른 요인으로 Momentum Crash가 발생한 경우 (코로나 바이러스) 모델 성능 약화
 - 좀 더 자세한 내용은 [Final Report](https://github.com/namwootree/UNIST_AICP/blob/main/Final%20Report%20UNIST%20%E1%84%83%E1%85%A9%E1%86%BC%E1%84%92%E1%85%A1%E1%86%A8%20%E1%84%80%E1%85%A2%E1%84%86%E1%85%B5.pdf)에서 확인해주세요
 <br>
 
